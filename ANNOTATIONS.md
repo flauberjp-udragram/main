@@ -94,52 +94,46 @@ The value of AWS_ACCESS_KEY_ID need to be in base64, you can do that by using: e
 - Debug Running Pods -> Debugging with container exec. Link: https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#container-exec
   kubectl exec ${POD_NAME} -- bash
 
-# Horizontal Pod Autoscaler (HPA)
-
-kubectl autoscale deployment backend-feed --cpu-percent=50 --min=2 --max=4
-kubectl delete hpa backend-feed
-
-## References:
-
-https://stackoverflow.com/questions/37133114/how-do-i-update-a-kubernetes-autoscaler
-https://schoolofdevops.github.io/ultimate-kubernetes-bootcamp/pods-health-probes/
-https://blog.logrocket.com/how-to-implement-a-health-check-in-node-js/
-https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-https://stackoverflow.com/questions/60038914/simple-healthcheck-endpoint-in-nginx-server-container
-
 # Ionic and prod
 
-Ionic and prod: https://ionicframework.com/docs/cli/commands/build
-build locally: ionic serve -- prod
-run locally: ionic serve -- prod
+- Ionic and prod: https://ionicframework.com/docs/cli/commands/build
+  -- > _build locally: ionic serve -- prod_
+  -- > _run locally: ionic serve -- prod_
 
 # Logs
 
 - Microservices logging best practices every team should know. Link: https://www.techtarget.com/searchapparchitecture/tip/5-essential-tips-for-logging-microservices
-  . Kubernetes log aggregation. Link: https://blog.logrocket.com/kubernetes-log-aggregation/
+- Kubernetes log aggregation. Link: https://blog.logrocket.com/kubernetes-log-aggregation/
 - Logging Architecture. Link: https://kubernetes.io/docs/concepts/cluster-administration/logging/#cluster-level-logging-architectures
 - All Things Kubernetes: Painless Log Aggregation. Link: https://medium.com/rafay-systems/all-things-kubernetes-painless-log-application-aggregation-e2a7c75d3cba
 
 # Kubernetes Dashboard UI
 
-1. Deploy and Access the Kubernetes Dashboard. Link: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-2. Creating sample user, and get authentication token. Link: https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
-3. How to Monitor Kubernetes With the Official Dashboard. Link: https://www.howtogeek.com/devops/how-to-monitor-kubernetes-with-the-official-dashboard/
+- [Deploy and Access the Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+- [Creating sample user, and get authentication token.](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md)
+  - To get token:
+    > kubectl -n kubernetes-dashboard create token admin-user\_
+- [How to Monitor Kubernetes With the Official Dashboard.](https://www.howtogeek.com/devops/how-to-monitor-kubernetes-with-the-official-dashboard/)
+- [Tutorial: Deploy the Kubernetes Dashboard (web UI)](https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html)
 
 # Cors
 
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
-Intercepto
-========= \* https://www.edgesidesolutions.com/angular-interceptors/
-https://www.npmjs.com/package/uuid
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
+
+# Intercepto
+
+- https://www.edgesidesolutions.com/angular-interceptors/
+- https://www.npmjs.com/package/uuid
 
 # Metric
 
-- In AWS EKS, HPA (horizontal-pod-autoscaler) failed to get cpu utilization. Link: https://stackoverflow.com/a/69177173/6771132
-  kubectl top pods
-- Installing the Kubernetes Metrics Server. Link: https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html
+- [In AWS EKS, HPA (horizontal-pod-autoscaler) failed to get cpu utilization.](https://stackoverflow.com/a/69177173/6771132)
+  > _kubectl top pods_
+- [Installing the Kubernetes Metrics Server.](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)
+- [Kubernetes HPA on AKS is failing with error 'missing request for cpu'.](https://stackoverflow.com/questions/62800892/kubernetes-hpa-on-aks-is-failing-with-error-missing-request-for-cpu)
+  > kubectl logs -n kube-system -l k8s-app=metrics-server --container metrics-server
 
-# References
+### References
 
 - How do I pass environment variables to Docker containers? Link: https://stackoverflow.com/questions/30494050/how-do-i-pass-environment-variables-to-docker-containers
 
@@ -176,3 +170,28 @@ https://www.npmjs.com/package/uuid
 - Run Ubuntu Linux containers on Windows. Link: https://ubuntu.com/tutorials/windows-ubuntu-hyperv-containers#1-overview
 
 - How do I expose the Kubernetes services running on my Amazon EKS cluster? Link: https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-services-cluster/
+
+# Horizontal Pod Autoscaler (HPA)
+
+- kubectl autoscale deployment backend-feed --cpu-percent=50 --min=2 --max=4
+  - _kubectl delete hpa backend-feed_
+- [How to fix failed get resource metric in Kubernetes HPA.](https://aptakube.com/blog/how-to-fix-failedgeteesourcemetric-hpa)
+- [How to fix failed get resource metric in Kubernetes HPA](https://aptakube.com/blog/how-to-fix-failedgeteesourcemetric-hpa)
+
+### References:
+
+- https://stackoverflow.com/questions/37133114
+- how-do-i-update-a-kubernetes-autoscaler
+- https://schoolofdevops.github.io/ultimate-kubernetes-bootcamp/pods-health-probes/
+- https://blog.logrocket.com/how-to-implement-a-health-check-in-node-js/
+- https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+- https://stackoverflow.com/questions/60038914/simple-healthcheck-endpoint-in-nginx-server-container
+
+# kubectl set image
+
+# JavaScript heap out of memory
+
+- [JavaScript heap out of memory while running a Nodejs app on App Platform](https://www.digitalocean.com/community/questions/javascript-heap-out-of-memory-while-running-a-nodejs-app-on-app-platform)
+- [Kubernetes CrashLoopBackOff — How to Troubleshoot](https://foxutech.medium.com/kubernetes-crashloopbackoff-how-to-troubleshoot-940dbb16bc84)
+- [Node.js Memory Limits - What You Should Know](https://blog.appsignal.com/2021/12/08/nodejs-memory-limits-what-you-should-know.html)
+- [How to solve JavaScript heap out of memory error](https://sebhastian.com/javascript-heap-out-of-memory/)
