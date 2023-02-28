@@ -16,6 +16,13 @@ spec:
     spec:
       containers:
         - image: flauberjp/udagram-reverseproxy
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "50m"
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
           imagePullPolicy: Always
           name: reverseproxy
           ports:
@@ -24,5 +31,5 @@ spec:
             httpGet:
               path: /health
               port: 8080
-            initialDelaySeconds: 3
+            initialDelaySeconds: 60
             periodSeconds: 3

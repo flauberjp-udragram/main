@@ -71,7 +71,7 @@ spec:
               memory: "64Mi"
               cpu: "250m"
             limits:
-              memory: "128Mi"
+              memory: "2048Mi"
               cpu: "500m"
           imagePullPolicy: Always
           name: backend-feed
@@ -81,5 +81,5 @@ spec:
             httpGet:
               path: /health
               port: 8082
-            initialDelaySeconds: 15
+            initialDelaySeconds: 360
             periodSeconds: 3
